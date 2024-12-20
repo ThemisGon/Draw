@@ -5,16 +5,38 @@
 import random
 name_list = [] # Λίστα με τα ονόματα που εισάγει ο χρήστης
 draw_list = [] # Λίστα με τα ονόματα που θα δωθούν στον κάθε χρήστη μετά την κλήρωση
-print ('Δώστε έναν αριθμό για τα άτομα που θα συμμετέχουν στην κλήρωση:')
-number = int(input(''))
+
+print('Δώστε έναν αριθμό για τα άτομα που θα συμμετέχουν στην κλήρωση:')
+while True:
+    number = input('')
+    if number.isdigit():  # Ελέγχει αν αυτό που εισάγει είναι string που περιέχει μόνο αριθμούς
+        number = int(number)  # Το μετατρέπει σε integer
+        break
+    else:
+        print('Αυτό που δώσατε δεν είναι αριθμός. Δώστε έναν αριθμό για τα άτομα που θα συμμετέχουν στην κλήρωση:')
+
 print (f'Τώρα δώσε το κάθε όνομα απο τα {number} άτομα που θα συμμετέχουν στην κλήρωηση:')
-i = number
-while i>=1:
-    name = str(input(''))
-    #print(name)
+name_list = []
+for _ in range(number):
+    name = input('Δώσε όνομα: ').strip()
     name_list.append(name)
-    i-=1
-print(name_list)
-draw_list = name_list
-print(draw_list)
-print (f'Το άτομο που θα αγοράσει δώρο ο '+name_list[1]+' είναι: '+ draw_list[3])
+
+# Δημιουργούμε τη λίστα των αντιστοιχίσεων
+draw_list = name_list[:]
+random.shuffle(draw_list)  # Ανακατεύουμε τη λίστα
+
+# Βεβαιωνόμαστε ότι κανείς δεν παίρνει το δικό του όνομα
+while any(name_list[i] == draw_list[i] for i in range(number)):
+    random.shuffle(draw_list)
+
+# Ενημερώνουμε κάθε άτομο ξεχωριστά για το ποιον του έτυχε
+assignments = {name_list[i]: draw_list[i] for i in range(number)}
+
+print("\nΗ κλήρωση ολοκληρώθηκε! Τώρα κάθε άτομο μπορεί να δει ποιον του έτυχε.")
+for name in name_list:
+    input(f"\n{name}, πάτα Enter για να δεις ποιον θα πάρεις δώρο.")
+    print(f'Σου έτυχε το άτομο: {assignments[name]}')
+    input("Πάτα Enter για να καθαριστεί η οθόνη και να μην δεί κανένας ποιόν έτυχες!")
+    print("\033[H\033[J", end="")  # Καθαρίζει την οθόνη (λειτουργεί σε πολλά terminals)
+
+print("Καλή επιτυχία με τα δώρα σας!")
