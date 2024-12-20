@@ -3,14 +3,18 @@
 #Και έπειτα αν συνδεθεί με το όνομα του θα του δώσει ένα τυχαίο όνομα απο τα ονόματα που έδωσε πρίν
 
 import random
-name_list = []
+name_list = [] # Λίστα με τα ονόματα που εισάγει ο χρήστης
+draw_list = [] # Λίστα με τα ονόματα που θα δωθούν στον κάθε χρήστη μετά την κλήρωση
 print ('Δώστε έναν αριθμό για τα άτομα που θα συμμετέχουν στην κλήρωση:')
 number = int(input(''))
 print (f'Τώρα δώσε το κάθε όνομα απο τα {number} άτομα που θα συμμετέχουν στην κλήρωηση:')
 i = number
-while i>=0:
+while i>=1:
     name = str(input(''))
     #print(name)
     name_list.append(name)
     i-=1
 print(name_list)
+draw_list = name_list
+print(draw_list)
+print (f'Το άτομο που θα αγοράσει δώρο ο '+name_list[1]+' είναι: '+ draw_list[3])
