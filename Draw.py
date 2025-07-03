@@ -42,3 +42,4 @@ for name in name_list:
 print("Καλή επιτυχία με τα δώρα σας!")
 
 print("This is a new feature to the code!")
+print("Amazing!")
