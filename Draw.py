@@ -41,5 +41,7 @@ for name in name_list:
 
 print("Καλή επιτυχία με τα δώρα σας!")
 
+print("Έρχεται η νέα έκδοση!")
+
 print("This is a new feature to the code!")
 print("Amazing!")
