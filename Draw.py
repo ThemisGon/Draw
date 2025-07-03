@@ -40,3 +40,8 @@ for name in name_list:
     print("\033[H\033[J", end="")  # Καθαρίζει την οθόνη (λειτουργεί σε πολλά terminals)
 
 print("Καλή επιτυχία με τα δώρα σας!")
+
+print("Έρχεται η νέα έκδοση!")
+
+print("This is a new feature to the code!")
+print("Amazing!")
